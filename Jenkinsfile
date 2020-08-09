@@ -8,7 +8,7 @@ pipeline {
     stages {
             stage('Build') {
                 steps {
-                    mvn clean install
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
     post {
         success {
             echo 'Successful build, will push the image to docker'
-            docker push rvanwyk91/eportfolio:${MVN_VERSION}
+            sh 'docker push rvanwyk91/eportfolio:${MVN_VERSION}'
         }
     }
 }
