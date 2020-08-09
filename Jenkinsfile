@@ -18,7 +18,7 @@ pipeline {
         success {
 
             echo 'Successful build, will push the image to docker'
-            sh 'docker push rvanwyk91/eportfolio:${MVN_VERSION}'
+            sh 'docker push rvanwyk91/eportfolio:${POM_VERSION}'
         }
     }
 }
