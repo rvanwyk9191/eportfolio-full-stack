@@ -26,7 +26,7 @@ pipeline {
                     POM_VERSION = pom.version
                     echo POM_VERSION
                     echo 'Successful build, will push the image to docker'
-                    docker.withRegistry('https://docker.com/', 'DOCKER') {
+                    docker.withRegistry('https://hub.docker.com/', 'DOCKER') {
                         def pcImg = docker.build("rvanwyk91/eportfolio:" + POM_VERSION.minus("-SNAPSHOT"), '.')
                         pcImg.push();
                     }
