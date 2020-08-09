@@ -10,7 +10,7 @@ pipeline {
                 git 'https://github.com/rvanwyk9191/eportfolio-full-stack.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean install"
+                sh "mvn clean install"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
