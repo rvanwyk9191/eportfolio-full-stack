@@ -2,7 +2,8 @@ pipeline {
     agent none
 
     environment {
-        MVN_VERSION = readMavenPom().getArtifactId()
+        pom = readMavenPom file: 'pom.xml'
+        env.POM_VERSION = pom.version
     }
 
     stages {
@@ -15,6 +16,7 @@ pipeline {
 
     post {
         success {
+
             echo 'Successful build, will push the image to docker'
             sh 'docker push rvanwyk91/eportfolio:${MVN_VERSION}'
         }
