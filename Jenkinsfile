@@ -1,11 +1,8 @@
+def POM_VERSION
 pipeline {
    agent any
 
    stages {
-        stage('Read Pom Version'){
-
-            }
-
         stage('Build') {
 
             steps {
@@ -15,13 +12,16 @@ pipeline {
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean install"
 
+                script {
+                    pom = readMavenPom file: 'pom.xml'
+                    POM_VERSION = pom.version
+                }
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
          }
 
          post {
-            pom = readMavenPom file: 'pom.xml'
-            env.POM_VERSION = pom.version
+
             // If Maven was able to run the tests, even if some of the test
             // failed, record the test results and archive the jar file.
             success {
