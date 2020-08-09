@@ -25,11 +25,11 @@ pipeline {
                     pom = readMavenPom file: 'pom.xml'
                     POM_VERSION = pom.version
                     echo POM_VERSION
+                    echo 'Successful build, will push the image to docker'
+                    sh 'docker push rvanwyk91/eportfolio:$POM_VERSION'
                 }
                 junit '**/target/surefire-reports/TEST-*.xml'
                 archiveArtifacts 'target/*.jar'
-                echo 'Successful build, will push the image to docker'
-                sh 'docker push rvanwyk91/eportfolio:$POM_VERSION'
             }
          }
       }
