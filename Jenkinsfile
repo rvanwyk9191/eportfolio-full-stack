@@ -15,7 +15,7 @@ pipeline {
                 script {
                     pom = readMavenPom file: 'pom.xml'
                     POM_VERSION = pom.version
-                    echo $POM_VERSION
+                    echo ${POM_VERSION}
                 }
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
