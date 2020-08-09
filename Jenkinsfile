@@ -1,4 +1,5 @@
 pipeline {
+    agent none
 
     environment {
         MVN_VERSION = readMavenPom().getArtifactId()
