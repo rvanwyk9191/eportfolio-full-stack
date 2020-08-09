@@ -26,6 +26,7 @@ pipeline {
                     POM_VERSION = pom.version
                     echo POM_VERSION
                     echo 'Successful build, will push the image to docker'
+                    sh 'docker build -t rvanwyk91/eportfolio:' + POM_VERSION.minus("-SNAPSHOT") + ' .'
                     sh 'docker push -t rvanwyk91/eportfolio:' + POM_VERSION.minus("-SNAPSHOT")
                 }
                 junit '**/target/surefire-reports/TEST-*.xml'
