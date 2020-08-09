@@ -8,7 +8,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/rvanwyk9191/eportfolio-full-stack.git'
-
+                git 'checkout develop'
                 // Run Maven on a Unix agent.
                 sh "mvn clean install"
 
