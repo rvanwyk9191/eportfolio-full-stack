@@ -15,6 +15,7 @@ pipeline {
                 script {
                     pom = readMavenPom file: 'pom.xml'
                     POM_VERSION = pom.version
+                    echo $POM_VERSION
                 }
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -28,7 +29,7 @@ pipeline {
                junit '**/target/surefire-reports/TEST-*.xml'
                archiveArtifacts 'target/*.jar'
                echo 'Successful build, will push the image to docker'
-               sh 'docker push rvanwyk91/eportfolio:${POM_VERSION}'
+               sh 'docker push rvanwyk91/eportfolio:$POM_VERSION'
             }
          }
       }
