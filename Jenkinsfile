@@ -26,7 +26,7 @@ pipeline {
                     POM_VERSION = pom.version
                     echo POM_VERSION
                     echo 'Successful build, will push the image to docker'
-                    def pcImg = docker.build("examplecorp/spring-petclinic:" + POM_VERSION.minus("-SNAPSHOT"), '.')
+                    def pcImg = docker.build("rvanwyk91/eportfolio:" + POM_VERSION.minus("-SNAPSHOT"), '.')
                     pcImg.push();
                 }
                 junit '**/target/surefire-reports/TEST-*.xml'
