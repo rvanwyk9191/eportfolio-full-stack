@@ -17,7 +17,7 @@ public class LoadDocumentsController {
     public ResponseEntity<InputStreamResource> getDocument(@RequestParam String documentName){
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=" + documentName);
-        PathResource pdfFile = new PathResource("/documents/" + documentName);
+        PathResource pdfFile = new PathResource("/" + documentName);
         ResponseEntity<InputStreamResource> response = null;
         try {
             response = new ResponseEntity<>(
